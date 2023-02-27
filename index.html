@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Listas Depegables</title>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+  <script src="main.js"></script>
+</head>
+
+<body>
+  <table>
+    <!-- OPCIONES GENERALES -->
+    <tr>
+      <td class="FldCaption">Detalle:</td>
+      <td class="Data" colspan="9">
+        <select size="1" onchange="OPCION_DETALLE();" name="opc_detalle" id="opc_detalle">
+        <option value="">Seleccione detalle</option>
+        <option value="I">Importaciones</option>
+        <option value="S">Servicios</option>
+        <option value="R">Renta</option>
+        <option value="T">Transferencias corrientes</option>
+        <option value="P">Capital privado</option>
+        <option value="O">Capital oficial</option>
+        </select>
+      </td>
+    </tr>
+
+    <!-- ***** Opcion Importaciones ***** -->
+    <tr class="seccionImportaciones">
+      <td class="FldCaption">Pais vendedor:</td>
+      <td class="Data" colspan="9">
+        <select size="1" id="opc_pais_vendedor">
+        <option value="I">Guatemala</option>
+        <option value="S">El Salvador</option>
+        <option value="R">Honduras</option>
+        <option value="T">Mexico</option>
+        <option value="P">Costa Rica</option>
+        </select>
+      </td>
+    </tr>
+
+    <tr class="seccionImportaciones">
+      <td class="FldCaption">Especifique mercancia:</td>
+      <td class="Data" colspan="9">
+        <strong class="input"><em><span><span>
+          <input maxlength="75" title="" size="75" name="" id="" value="">
+          </span></span></em></strong>
+        </strong>
+      </td>
+    </tr>
+
+    <tr class="seccionImportaciones">
+      <td class="FldCaption">Transporte a utilizar:</td>
+      <td class="Data" colspan="9">
+        <select size="1">
+        <option value="A">Aereo</option>
+        <option value="M">Maritimo</option>
+        <option value="T">Terrestre</option>
+        </select>
+      </td>
+    </tr>
+    <!-- ******************************** -->
+
+    <!-- ***** Opcion Servicios ***** -->
+    <tr class="opcionesServicios">
+      <td class="FldCaption">Servicio:</td>
+      <td class="Data" colspan="9">
+        <select size="1" onchange="OPCION_SECCION_SERVICIOS();" id="opc_seccion_servicios">
+        <option value="M">Manufactura</option>
+        <option value="T">Transporte</option>
+        <option value="TV">Turismo y viajes</option>
+        <option value="C">Construccion</option>
+        <option value="S">Seguros</option>
+        <option value="F">Financieros</option>
+        <option value="CP">Cargos por uso de propiedad</option>
+        <option value="TI">Telecomunicaciones, informatica y de informacion</option>
+        <option value="OS">Otros servicios empresariales</option>
+        <option value="P">Personales, culturales y recreativos</option>
+        <option value="G">Gobierno</option>
+        </select>
+      </td>
+    </tr>
+
+    <!-- Transporte -->
+    <tr class="seccionServTransporte">
+      <td class="FldCaption">Tipo:</td>
+      <td class="Data" colspan="9">
+        <select size="1" onchange="OPCION_SERVICIO_TIPO();" id="opc_serv_trans_tipo">
+        <option value="P">Personas</option>
+        <option value="C">Carga</option>
+        <option value="PM">Postales y mensajeria</option>
+        <option value="E">Energia electrica</option>
+        <option value="O">Otros</option>
+        </select>
+      </td>
+    </tr>
+
+    <tr class="seccionImportOtros">
+      <td class="FldCaption">Especifique:</td>
+      <td class="Data" colspan="9">
+        <strong class="input"><em><span><span>
+          <input maxlength="75" title="" size="75" name="" id="" value="">
+          </span></span></em></strong>
+        </strong>
+      </td>
+    </tr>
+
+    <tr class="seccionServTransporte">
+      <td class="FldCaption">Transporte:</td>
+      <td class="Data" colspan="9">
+        <select size="1">
+        <option value="A">Aereo</option>
+        <option value="M">Maritimo</option>
+        <option value="T">Terrestre</option>
+        </select>
+      </td>
+    </tr>
+
+    <!-- Turismo y Viajes -->
+    <tr class="seccionTurismoViajes">
+      <td class="FldCaption">Tipo:</td>
+      <td class="Data" colspan="9">
+        <select size="1" onchange="OPCION_TURISMO_VIAJES_TIPO();" id="opc_turismo_viajes_tipo">
+        <option value="T">Turismo y viajes personales</option>
+        <option value="N">Negocios</option>
+        <option value="E">Estudios</option>
+        <option value="S">Salud</option>
+        <option value="O">Otros</option>
+        </select>
+      </td>
+    </tr>
+
+    <tr class="seccionTurismoViajesOtros">
+      <td class="FldCaption">Especifique:</td>
+      <td class="Data" colspan="9">
+        <strong class="input"><em><span><span>
+          <input maxlength="75" title="" size="75" name="" id="" value="">
+          </span></span></em></strong>
+        </strong>
+      </td>
+    </tr>
+
+    <!-- Seguros -->
+    <tr class="seccionSeguros">
+      <td class="FldCaption">Tipo:</td>
+      <td class="Data" colspan="9">
+        <select size="1" onchange="OPCION_SEGUROS();" id="opc_seguros_tipo">
+        <option value="SM">Seguro de mercancias</option>
+        <option value="SV">Seguro de vida</option>
+        <option value="SN">Seguro de no vida</option>
+        <option value="R">Reaseguros</option>
+        <option value="O">Otros</option>
+        </select>
+      </td>
+    </tr>
+
+    <tr class="seccionSegurosOtros">
+      <td class="FldCaption">Especifique:</td>
+      <td class="Data" colspan="9">
+        <strong class="input"><em><span><span>
+          <input maxlength="75" title="" size="75" name="" id="" value="">
+          </span></span></em></strong>
+        </strong>
+      </td>
+    </tr>
+
+     <!-- Financieros -->
+     <tr class="seccionFinancieros">
+      <td class="FldCaption">Tipo:</td>
+      <td class="Data" colspan="9">
+        <select size="1" onchange="OPCION_FINANCIEROS();" id="opc_financieros_tipo">
+        <option value="C">Comisiones</option>
+        <option value="O">Otros servicios</option>
+        </select>
+      </td>
+    </tr>
+
+    <!-- Cargos por uso de propiedad -->
+    <tr class="seccionCargos">
+      <td class="FldCaption">Tipo:</td>
+      <td class="Data" colspan="9">
+        <select size="1" onchange="OPCION_CARGOS_PROP();" id="opc_cargos_prop">
+        <option value="F">Franquisia</option>
+        <option value="D">Derechos de autor</option>
+        <option value="L">Licencias</option>
+        <option value="R">Regalias</option>
+        <option value="O">Otros</option>
+        </select>
+      </td>
+    </tr>
+
+    <tr class="seccionCargosOtros">
+      <td class="FldCaption">Especifique:</td>
+      <td class="Data" colspan="9">
+        <strong class="input"><em><span><span>
+          <input maxlength="75" title="" size="75" name="" id="" value="">
+          </span></span></em></strong>
+        </strong>
+      </td>
+    </tr>
+
+    <!-- Telecomunicaciones e Informatica -->
+    <tr class="seccionTeleInfo">
+      <td class="FldCaption">Tipo:</td>
+      <td class="Data" colspan="9">
+        <select size="1" onchange="OPCION_TELE_INFO();" id="opc_tele_info">
+        <option value="T">Telecomunicaciones</option>
+        <option value="E">Equipos de computacion</option>
+        <option value="P">Programas informaticos</option>
+        <option value="D">De informacion (almacenamiento y base de datos)</option>
+        <option value="O">Otros</option>
+        </select>
+      </td>
+    </tr>
+
+    <tr class="seccionTeleInfoOtros">
+      <td class="FldCaption">Especifique:</td>
+      <td class="Data" colspan="9">
+        <strong class="input"><em><span><span>
+          <input maxlength="75" title="" size="75" name="" id="" value="">
+          </span></span></em></strong>
+        </strong>
+      </td>
+    </tr>
+
+    <!-- Otros Servicios Empresariales -->
+    <tr class="seccionServEmp">
+      <td class="FldCaption">Tipo:</td>
+      <td class="Data" colspan="9">
+        <select size="1" onchange="OPCION_SERV_EMPR();" id="opc_serv_emp">
+        <option value="C">Consultoria y servicios tecnicos</option>
+        <option value="A">Agricolas, de mineria, tratamiento de residuos y descontaminacion</option>
+        <option value="AD">Arrendamiento</option>
+        <option value="R">Relacionados con el comercio</option>
+        <option value="CL">Centro de llamadas (call centers)</option>
+        <option value="O">Otros</option>
+        </select>
+      </td>
+    </tr>
+
+    <tr class="seccionServEmpOtros">
+      <td class="FldCaption">Especifique:</td>
+      <td class="Data" colspan="9">
+        <strong class="input"><em><span><span>
+          <input maxlength="75" title="" size="75" name="" id="" value="">
+          </span></span></em></strong>
+        </strong>
+      </td>
+    </tr>
+
+    <!-- Personales, Culturales y Recreativos -->
+    <tr class="seccionPerCultRec">
+      <td class="FldCaption">Tipo:</td>
+      <td class="Data" colspan="9">
+        <select size="1" onchange="OPCION_PER_CULT_REC();" id="opc_per_cult_rec">
+        <option value="A">Audiovisuales y conexos (producciones cinematograficas, programas de radios)</option>
+        <option value="P">Presentaciones artisticas, culturales y deportivas</option>
+        <option value="O">Otros</option>
+        </select>
+      </td>
+    </tr>
+
+    <tr class="seccionPerCultRecOtros">
+      <td class="FldCaption">Especifique:</td>
+      <td class="Data" colspan="9">
+        <strong class="input"><em><span><span>
+          <input maxlength="75" title="" size="75" name="" id="" value="">
+          </span></span></em></strong>
+        </strong>
+      </td>
+    </tr>
+
+    <!-- Gobierno -->
+    <tr class="seccionGobierno">
+      <td class="FldCaption">Tipo:</td>
+      <td class="Data" colspan="9">
+        <select size="1" onchange="OPCION_GOBIERNO();" id="opc_gobierno">
+        <option value="E">Embajadas, organismos internacionales, bases militares y fuerzas de paz</option>
+        <option value="PD">Personal diplomatico, consular y militar</option>
+        <option value="PV">Pagos por visas y otros servicios realizados en consultados y embajadas establecidas en Guatemala</option>
+        <option value="O">Otros</option>
+        </select>
+      </td>
+    </tr>
+
+    <tr class="seccionGobiernoOtros">
+      <td class="FldCaption">Especifique:</td>
+      <td class="Data" colspan="9">
+        <strong class="input"><em><span><span>
+          <input maxlength="75" title="" size="75" name="" id="" value="">
+          </span></span></em></strong>
+        </strong>
+      </td>
+    </tr>
+    <!-- **************************** -->
+
+    <!-- ***** Opcion Renta ***** -->
+    <tr class="seccionRenta">
+      <td class="FldCaption">Tipo:</td>
+      <td class="Data" colspan="9">
+        <select size="1" onchange="OPCION_RENTA();" id="opc_renta">
+        <option value="R">Renumeracion de empleados</option>
+        <option value="D">Dividendos</option>
+        <option value="U">Utilidades</option>
+        <option value="ID">Intereses por depositos</option>
+        <option value="IT">Intereses por titulos</option>
+        <option value="IP">Intereses por prestamo</option>
+        <option value="O">Otros</option>
+        </select>
+      </td>
+    </tr>
+
+    <tr class="seccionRentaOtros">
+      <td class="FldCaption">Especifique:</td>
+      <td class="Data" colspan="9">
+        <strong class="input"><em><span><span>
+          <input maxlength="75" title="" size="75" name="" id="" value="">
+          </span></span></em></strong>
+        </strong>
+      </td>
+    </tr>
+    <!-- **************************** -->
+
+    <!-- ***** Transferencias Corrientes ***** -->
+    <tr class="seccionTransCorrientes">
+      <td class="FldCaption">Tipo:</td>
+      <td class="Data" colspan="9">
+        <select size="1" onchange="OPCION_TRANS_CORRIENTES();" id="opc_trans_corrientes">
+        <option value="R">Remesas familiares</option>
+        <option value="D">Donaciones</option>
+        <option value="P">Pensiones y jubilaciones</option>
+        <option value="O">Otros</option>
+        </select>
+      </td>
+    </tr>
+
+    <tr class="seccionTransCorrRemesas">
+      <td class="FldCaption">Servicio:</td>
+      <td class="Data" colspan="9">
+        <select size="1" id="opc_trans_corr_remesas">
+        <option value="E">Estado (si el destino es Estado Unidos de America)</option>
+        <option value="EU">Empresa utilizada en la transferencia (remesadora)</option>
+        </select>
+      </td>
+    </tr>
+
+    <tr class="seccionTransCorrientesOtros">
+      <td class="FldCaption">Especifique:</td>
+      <td class="Data" colspan="9">
+        <strong class="input"><em><span><span>
+          <input maxlength="75" title="" size="75" name="" id="" value="">
+          </span></span></em></strong>
+        </strong>
+      </td>
+    </tr>
+    <!-- **************************** -->
+
+    <!-- ***** Capital Privado ***** -->
+    <tr class="seccionCapitalPrivado">
+      <td class="FldCaption">Tipo:</td>
+      <td class="Data" colspan="9">
+        <select size="1" onchange="OPCION_CAPITAL_PRIVADO();" id="opc_capital_privado">
+        <option value="ID">Inversion directa en el exterior</option>
+        <option value="IC">Inversion en cartera</option>
+        <option value="O">Otra inversion</option>
+        </select>
+      </td>
+    </tr>
+
+    <tr class="seccionCapitalPrivadoCartera">
+      <td class="FldCaption">Servicio:</td>
+      <td class="Data" colspan="9">
+        <select size="1" id="opc_capital_privado_cartera">
+        <option value="CB">Compra de bonos y otros titulos de deuda</option>
+        <option value="CA">Compra de acciones</option>
+        </select>
+      </td>
+    </tr>
+
+    <tr class="seccionCapitalPrivadoInversion">
+      <td class="FldCaption">Servicio:</td>
+      <td class="Data" colspan="9">
+        <select size="1" onchange="OPCION_CAP_PRIV_INVERSION();" id="opc_cap_priv_inversion">
+        <option value="D">Depositos</option>
+        <option value="LC">Lineas de credito</option>
+        <option value="CC">Cartas de credito</option>
+        <option value="PC">Prestamos de corto plazo (menor a 1 anio)</option>
+        <option value="PL">Prestamos de largo plazo (mayor a 1 anio)</option>
+        <option value="O">Otros</option>
+        </select>
+      </td>
+    </tr>
+
+    <tr class="seccionCapPrivadoInvOtros">
+      <td class="FldCaption">Especifique:</td>
+      <td class="Data" colspan="9">
+        <strong class="input"><em><span><span>
+          <input maxlength="75" title="" size="75" name="" id="" value="">
+          </span></span></em></strong>
+        </strong>
+      </td>
+    </tr>
+    <!-- **************************** -->
+
+    <!-- ***** Capital Oficial ***** -->
+    <tr class="seccionCapitalOficial">
+      <td class="FldCaption">Tipo:</td>
+      <td class="Data" colspan="9">
+        <select size="1" onchange="OPCION_CAPITAL_OFICIAL();" id="opc_capital_oficial">
+        <option value="R">Compra de bonos</option>
+        <option value="D">Lineas de credito</option>
+        <option value="U">Prestamos de corto plazo (menor a 1 anio)</option>
+        <option value="ID">Prestamos de largo plazo (mayor a 1 anio)</option>
+        <option value="O">Otros</option>
+        </select>
+      </td>
+    </tr>
+
+    <tr class="seccionCapitalOficialOtros">
+      <td class="FldCaption">Especifique:</td>
+      <td class="Data" colspan="9">
+        <strong class="input"><em><span><span>
+          <input maxlength="75" title="" size="75" name="" id="" value="">
+          </span></span></em></strong>
+        </strong>
+      </td>
+    </tr>
+    <!-- **************************** -->
+    
+  </table>
+</body>
+</html>
